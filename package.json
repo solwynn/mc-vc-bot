@@ -1,0 +1,22 @@
+{
+  "name": "mc-vc-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot that handles the permissions for linked voice and text channels",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wisnoi/mc-vc-bot.git"
+  },
+  "author": "wisnoi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wisnoi/mc-vc-bot/issues"
+  },
+  "homepage": "https://github.com/wisnoi/mc-vc-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
