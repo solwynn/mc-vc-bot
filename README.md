@@ -1,2 +1,2 @@
 # mc-vc-bot
-A Discord bot that handles the permissions for linked voice and text channels
+A Discord bot for the [Microsoft Community](https://discord.gg/microsoft) server that purges text channels after voice channel inactivity.
