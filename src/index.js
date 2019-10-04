@@ -33,7 +33,6 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
     
     // Dealing with a purge channel
     if (channels[oldMember.voiceChannelID]) {
-        console.log(oldMember.voiceChannelID);
         let channel = bot.channels.get(oldMember.voiceChannelID);
         if (!channel.members.length) {
             channels[oldMember.voiceChannelID].setToPurge = true;
