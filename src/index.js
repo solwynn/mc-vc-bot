@@ -45,7 +45,7 @@
 
     bot.once('ready', async () => {
         db.run('UPDATE channels SET set_to_purge = 0');
-        setInterval(purgeAll, 5000);
+        setInterval(purgeAll, 1800000);
     });
         
     bot.login(config.token);
