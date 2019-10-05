@@ -1,6 +1,0 @@
-{
-    "voiceChannelID": {
-        "textChannel": "textChannelID",
-        "setToPurge": false
-    }
-}

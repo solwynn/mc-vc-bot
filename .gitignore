@@ -60,6 +60,8 @@ typings/
 # next.js build output
 .next
 
-# bot configs
+# bot config
 config.json
-channels.json
+
+# channels database
+db/channels.db

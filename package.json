@@ -1,7 +1,7 @@
 {
   "name": "mc-vc-bot",
-  "version": "1.0.0",
-  "description": "A Discord bot that handles the permissions for linked voice and text channels",
+  "version": "1.0.1",
+  "description": "A Discord bot that handles the purging of linked voice and text channels",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wisnoi/mc-vc-bot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "sqlite": "^3.0.3"
   }
 }
