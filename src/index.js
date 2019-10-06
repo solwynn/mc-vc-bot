@@ -52,7 +52,7 @@
             db.run('UPDATE channels SET set_to_purge = 0 WHERE voice_id = ?', [newMember.voiceChannelID]);
 
             textChannel.overwritePermissions(newMember, { "VIEW_CHANNEL": true });
-            if (config.emitLog) textChannel.send(`${newMember} has entered the voice channel.`);
+            if (config.emitLog) textChannel.send(`[${(new Date()).toISOString()}] ${newMember} has entered the voice channel.`);
         }
     });
 
