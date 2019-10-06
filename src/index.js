@@ -39,8 +39,9 @@
             if (!voiceChannel.members.length) {
                 db.run('UPDATE channels SET set_to_purge = 1 WHERE voice_id = ?', [oldMember.voiceChannelID]);
             }
-
-            textChannel.permissionOverwrites.find((v) => v.id == oldMember.id).delete();
+            
+            const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
+            if (permissions) permissions.delete();
         }
 
         // Dealing with a linked channel
@@ -54,8 +55,12 @@
 
     });
 
-    bot.once('ready', async () => {
-        setInterval(purgeAll, 1800000);
+    bot.once('ready', () => {
+        setInterval(purgeAll, 5000);
+    });
+
+    bot.on('ready', () => {
+        console.log(`[${[Date.now()]}] Bot connected!`);
     });
         
     bot.login(config.token);
