@@ -54,7 +54,6 @@
             textChannel.overwritePermissions(newMember, { "VIEW_CHANNEL": true });
             if (config.emitLog) textChannel.send(`${newMember} has entered the voice channel.`);
         }
-
     });
 
     bot.once('ready', () => {
