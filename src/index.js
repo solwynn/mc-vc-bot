@@ -32,15 +32,23 @@
 
         // Dealing with a linked channel
         if (channels.some((v) => v.voice_id == oldMember.voiceChannelID)) {
-            const channel = bot.channels.get(oldMember.voiceChannelID);
-            if (!channel.members.length) {
+            const voiceChannel = bot.channels.get(oldMember.voiceChannelID);
+            const textChannel = bot.channels.get(channels.find((v) => v.voice_id == oldMember.voiceChannelID).text_id);
+
+            if (!voiceChannel.members.length) {
                 db.run('UPDATE channels SET set_to_purge = 1 WHERE voice_id = ?', [oldMember.voiceChannelID]);
             }
+
+            textChannel.permissionOverwrites.find((v) => v.id == oldMember.id).delete();
         }
 
         // Dealing with a linked channel
         if (channels.some((v) => v.voice_id == newMember.voiceChannelID)) {
+            const textChannel = bot.channels.get(channels.find((v) => v.voice_id == newMember.voiceChannelID).text_id);
+
             db.run('UPDATE channels SET set_to_purge = 0 WHERE voice_id = ?', [newMember.voiceChannelID]);
+
+            textChannel.overwritePermissions(newMember, { "VIEW_CHANNEL": true });
         }
 
     });
