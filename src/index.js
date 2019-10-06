@@ -42,6 +42,7 @@
             
             const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
             if (permissions) permissions.delete();
+            if (config.emitLog) textChannel.send(`${oldMember} has left the voice channel.`);
         }
 
         // Dealing with a linked channel
@@ -51,6 +52,7 @@
             db.run('UPDATE channels SET set_to_purge = 0 WHERE voice_id = ?', [newMember.voiceChannelID]);
 
             textChannel.overwritePermissions(newMember, { "VIEW_CHANNEL": true });
+            if (config.emitLog) textChannel.send(`${newMember} has entered the voice channel.`);
         }
 
     });
