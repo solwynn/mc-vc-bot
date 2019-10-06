@@ -35,12 +35,12 @@
         if (channels.some((v) => v.voice_id == oldMember.voiceChannelID)) {
             const voiceChannel = bot.channels.get(oldMember.voiceChannelID);
             const textChannel = bot.channels.get(channels.find((v) => v.voice_id == oldMember.voiceChannelID).text_id);
+            const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
 
             if (!voiceChannel.members.length) {
                 db.run('UPDATE channels SET set_to_purge = 1 WHERE voice_id = ?', [oldMember.voiceChannelID]);
             }
             
-            const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
             if (permissions) permissions.delete();
             if (config.emitLog) textChannel.send(`${oldMember} has left the voice channel.`);
         }
