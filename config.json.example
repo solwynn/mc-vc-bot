@@ -1,4 +1,5 @@
 {
     "token": "",
+    "purgeInterval": 1800000,
     "emitLog": true
 }

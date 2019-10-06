@@ -58,7 +58,7 @@
     });
 
     bot.once('ready', () => {
-        setInterval(purgeAll, 5000);
+        setInterval(purgeAll, config.purgeInterval);
     });
 
     bot.on('ready', () => {

@@ -1,6 +1,6 @@
 {
   "name": "mc-vc-bot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Discord bot that handles the purging of linked voice and text channels",
   "main": "src/index.js",
   "scripts": {
