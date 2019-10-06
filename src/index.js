@@ -26,9 +26,11 @@
     }
 
     bot.on('voiceStateUpdate', async (oldMember, newMember) => {
+        if (oldMember.voiceChannelID === newMember.voiceChannelID) return;
+
         const channels = await db.all('SELECT voice_id, text_id FROM channels');
 
-        // Dealing with a purge channel
+        // Dealing with a linked channel
         if (channels.some((v) => v.voice_id == oldMember.voiceChannelID)) {
             const channel = bot.channels.get(oldMember.voiceChannelID);
             if (!channel.members.length) {
@@ -36,7 +38,7 @@
             }
         }
 
-        // Dealing with a purge channel
+        // Dealing with a linked channel
         if (channels.some((v) => v.voice_id == newMember.voiceChannelID)) {
             db.run('UPDATE channels SET set_to_purge = 0 WHERE voice_id = ?', [newMember.voiceChannelID]);
         }
