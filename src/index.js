@@ -16,6 +16,7 @@
     async function purge(channel) {
         while (true) {
             const messages = await channel.fetchMessages({ limit: 100 });
+
             if (messages.array().length > 0) {
                 await channel.bulkDelete(messages);
             } else {
