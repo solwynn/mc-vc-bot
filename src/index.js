@@ -1,8 +1,8 @@
 (async () => {
     const Discord = require('discord.js');
-    const bot = new Discord.Client();
     const config = require(__dirname + '/../config.json');
     const sqlite = require('sqlite');
+    const bot = new Discord.Client();
     const db = await sqlite.open(__dirname + '/../db/channels.db');
 
     async function purgeAll() {
