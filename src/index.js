@@ -37,7 +37,7 @@
             const textChannel = bot.channels.get(channels.find((v) => v.voice_id == oldMember.voiceChannelID).text_id);
             const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
 
-            if (!voiceChannel.members.length) {
+            if (voiceChannel.members.array().length < 1) {
                 db.run('UPDATE channels SET set_to_purge = 1 WHERE voice_id = ?', [oldMember.voiceChannelID]);
             }
             
