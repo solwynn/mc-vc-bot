@@ -49,7 +49,6 @@
         if (channels.some((v) => v.voice_id == newMember.voiceChannelID)) {
             const textChannel = bot.channels.get(channels.find((v) => v.voice_id == newMember.voiceChannelID).text_id);
 
-            console.log(newMember.roles.some((role) => role.name === "dumb"));
             db.run('UPDATE channels SET set_to_purge = 0 WHERE voice_id = ?', [newMember.voiceChannelID]);
 
             textChannel.overwritePermissions(newMember, { "VIEW_CHANNEL": true });
