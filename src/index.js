@@ -17,7 +17,7 @@
         while (true) {
             const messages = await channel.fetchMessages({ limit: 100 });
 
-            if (messages.array().length > 0) {
+            if (messages.size > 0) {
                 await channel.bulkDelete(messages);
             } else {
                 db.run('UPDATE channels SET set_to_purge = 0 WHERE text_id = ?', [channel.id]);
@@ -37,7 +37,7 @@
             const textChannel = bot.channels.get(channels.find((v) => v.voice_id == oldMember.voiceChannelID).text_id);
             const permissions = textChannel.permissionOverwrites.find((v) => v.id == oldMember.id);
 
-            if (voiceChannel.members.array().length < 1) {
+            if (voiceChannel.members.size < 1) {
                 db.run('UPDATE channels SET set_to_purge = 1 WHERE voice_id = ?', [oldMember.voiceChannelID]);
             }
             
